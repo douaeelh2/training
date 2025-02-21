@@ -9,6 +9,8 @@ import java.util.Set;
 public class TaskFilter {
     private long id;
     private String name;
+    private String description;
+    private String status;
     private Set<String> technologyNames;
     private Pageable pageable;
 

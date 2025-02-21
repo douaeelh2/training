@@ -2,12 +2,13 @@ package com.example.task_service.services;
 
 
 import com.example.task_service.dao.TaskDao;
-import com.example.task_service.employee.dto.EmployeeDto;
-import com.example.task_service.employee.service.EmployeeRestClient;
+
 import com.example.task_service.entities.Task;
 import com.example.task_service.entities.Technology;
+import com.example.task_service.model.Employee;
 import com.example.task_service.repositories.TaskRepository;
 import com.example.task_service.repositories.TechnologyRepository;
+import com.example.task_service.restclients.EmployeeRestClient;
 import com.example.task_service.services.dtos.TaskDto;
 import com.example.task_service.services.dtos.TaskFilter;
 import com.example.task_service.services.mappers.TaskMapper;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -31,6 +33,19 @@ public class TaskService {
     private EmployeeRestClient employeeRestClient;
 
 
+    public Task findById(@PathVariable long id){
+        Task existingTask = taskRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Task not found"));
+
+        Employee employee = employeeRestClient.getEmployeeById(existingTask.getEmployeeId());
+
+        if (employee == null) {
+            throw new RuntimeException("Employee not found");
+        }
+             existingTask.setEmployee(employee);
+
+             return existingTask;
+    }
     @Transactional
     public TaskDto createTask(TaskDto taskDto) {
         Task task = taskMapper.toEntity(taskDto);
@@ -84,7 +99,7 @@ public class TaskService {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
 
-        EmployeeDto employee = employeeRestClient.getEmployeeById(employeeId);
+        Employee employee = employeeRestClient.getEmployeeById(employeeId);
 
         if (employee == null) {
             throw new RuntimeException("Employee not found");

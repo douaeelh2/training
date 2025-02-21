@@ -11,10 +11,12 @@ import org.mapstruct.MappingTarget;
 public interface TaskMapper {
 
     @Mapping(target = "technologies", source = "technologies")
+    @Mapping(target = "employee", ignore = true)
     Task toEntity(TaskDto taskDto);
 
     @Mapping(target = "technologies", source = "technologies")
     TaskDto toDto(Task task);
 
+    @Mapping(target = "employee", ignore = true)
     void updateEntityFromDto(TaskDto taskDto, @MappingTarget Task task);
 }

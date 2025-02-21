@@ -1,6 +1,6 @@
-package com.example.task_service.employee.service;
+package com.example.task_service.restclients;
 
-import com.example.task_service.employee.dto.EmployeeDto;
+import com.example.task_service.model.Employee;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface EmployeeRestClient {
 
     @GetMapping("/employees/{id}")
-    EmployeeDto getEmployeeById(@PathVariable("id") Long id);
+    Employee getEmployeeById(@PathVariable("id") Long id);
 }
 
 

@@ -1,17 +1,17 @@
-### 🟢 1. Obtenir la liste paginée des employés
-GET http://localhost:5959/employees?page=0&size=5
+###
+GET http://localhost:7552/demo/employees?page=0&size=5
 Accept: application/json
 
 ###
 GET http://localhost:7552/demo/employees/with-department
 Accept: application/json
 
-### 🟢 2. Obtenir un employé par ID
-GET http://localhost:5959/employees/1
+###
+GET http://localhost:7552/demo/employees/1
 Accept: application/json
 
-### 🟢 1. Créer un employé - Développeur
-POST http://localhost:5959/employees
+###
+POST http://localhost:7552/demo/employees
 Content-Type: application/json
 
 {
@@ -23,8 +23,8 @@ Content-Type: application/json
   "depId": 2
 }
 
-### 🟢 2. Créer un employé - Chef de projet
-POST http://localhost:5959/employees
+###
+POST http://localhost:7552/demo/employees
 Content-Type: application/json
 
 {
@@ -36,8 +36,8 @@ Content-Type: application/json
   "depId": 3
 }
 
-### 🟢 3. Créer un employé - Data Analyst
-POST http://localhost:5959/employees
+###
+POST http://localhost:7552/demo/employees
 Content-Type: application/json
 
 {
@@ -49,8 +49,8 @@ Content-Type: application/json
   "depId": 4
 }
 
-### 🟢 4. Mettre à jour un employé (ID = 1)
-PUT http://localhost:5959/employees/1
+###
+PUT http://localhost:7552/demo/employees/1
 Content-Type: application/json
 
 {

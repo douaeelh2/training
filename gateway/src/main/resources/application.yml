@@ -14,7 +14,7 @@ spring:
               - Path=/demo/**
 
           - id: task-service
-            uri: http://localhost:8080
+            uri: http://localhost:8082
             filters:
               - StripPrefix=1
             predicates:

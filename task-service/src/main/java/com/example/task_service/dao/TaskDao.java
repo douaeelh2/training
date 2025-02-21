@@ -42,7 +42,10 @@ public class TaskDao extends AbstractDao {
                 .select(Projections.constructor(
                         TaskDto.class,
                         task.id,
-                        task.name
+                        task.name,
+                        task.technologies,
+                        task.description,
+                        task.status
                 ))
                 .from(task)
                 .leftJoin(task.technologies, technology)
@@ -60,6 +63,11 @@ public class TaskDao extends AbstractDao {
             query.where(technology.name.in(technologyNames));
         }
 
+        // filter by status
+        var status = taskFilter.getStatus();
+        if (StringUtils.hasText(status)) {
+            query.where(task.status.contains(status));
+        }
 
         Pageable pageable = taskFilter.getPageable();
 

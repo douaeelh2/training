@@ -1,7 +1,7 @@
 GET http://localhost:7552/task-service/api/tasks
 
 ### 1. Create Task: Develop UI
-POST http://localhost:8080/api/tasks
+POST http://localhost:7552/task-service/api/tasks
 Content-Type: application/json
 
 {
@@ -11,8 +11,7 @@ Content-Type: application/json
   "technologies": [
     { "id": 1, "name": "React" },
     { "id": 2, "name": "Material-UI" }
-  ],
-  "employeeId": 1
+  ]
 }
 
 ###
@@ -28,14 +27,13 @@ Content-Type: application/json
   "technologies": [
     { "id": 3, "name": "Spring Security" },
     { "id": 4, "name": "JWT" }
-  ],
-  "employeeId": 2
+  ]
 }
 
 ###
 
 ### 3. Create Task: Optimize Database Queries
-POST http://localhost:8080/api/tasks
+POST http://localhost:7552/task-service/api/tasks
 Content-Type: application/json
 
 {
@@ -45,14 +43,13 @@ Content-Type: application/json
   "technologies": [
     { "id": 5, "name": "PostgreSQL" },
     { "id": 6, "name": "Hibernate" }
-  ],
-  "employeeId": 3
+  ]
 }
 
 
 ###
 ### 4. Create Task: Write API Documentation
-POST http://localhost:8080/api/tasks
+POST http://localhost:7552/task-service/api/tasks
 Content-Type: application/json
 
 {
@@ -61,13 +58,12 @@ Content-Type: application/json
   "status": "Pending",
   "technologies": [
     { "id": 7, "name": "Swagger" }
-  ],
-  "employeeId": 4
+  ]
 }
 
 
 ### 2. UPDATE Task
-PUT http://localhost:8080/api/tasks
+PUT http://localhost:7552/task-service/api/tasks
 Content-Type: application/json
 
 {
@@ -78,38 +74,38 @@ Content-Type: application/json
   "technologies": [
     { "id": 1, "name": "React" },
     { "id": 3, "name": "Node.js" }
-  ],
-  "employeeId": 101
-}
-
-###
-
-### 3. DELETE Task by ID
-DELETE http://localhost:8080/api/tasks/1
-
-###
-
-### 4. GET All Tasks
-GET http://localhost:8080/api/tasks
-Content-Type: application/json
-
-###
-
-### 5. SEARCH Tasks with Filter
-POST http://localhost:8080/api/tasks/search
-Content-Type: application/json
-
-{
-  "status": "In Progress",
-  "technologies": [
-    { "id": 1, "name": "React" }
   ]
 }
 
 ###
 
+### 3. DELETE Task by ID
+DELETE http://localhost:7552/task-service/api/tasks/1
+
+###
+
+### 4. GET All Tasks
+GET http://localhost:7552/task-service/api/tasks
+Content-Type: application/json
+
+###
+
+### 5. SEARCH Tasks with Filter
+POST http://localhost:7552/task-service/api/tasks/search
+Content-Type: application/json
+
+{
+  "status": "In Progress",
+  "technologies": [
+    { "name": "React" }
+  ]
+}
+
+###
+GET http://localhost:7552/task-service/api/tasks/1
+
 ### 6. ASSIGN Employee to Task
-POST http://localhost:8080/api/tasks/1/assign/102
+POST http://localhost:7552/task-service/api/tasks/2/assign/2
 Content-Type: application/json
 
 ###

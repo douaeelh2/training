@@ -1,5 +1,6 @@
 package com.example.task_service.entities;
 
+import com.example.task_service.model.Employee;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,5 +33,8 @@ public class Task {
 
     private long employeeId;
     private String status;
+
+    @Transient
+    private Employee employee;
 
 }

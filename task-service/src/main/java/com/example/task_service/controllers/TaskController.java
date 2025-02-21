@@ -1,6 +1,7 @@
 package com.example.task_service.controllers;
 
 
+import com.example.task_service.entities.Task;
 import com.example.task_service.services.TaskService;
 import com.example.task_service.services.dtos.TaskDto;
 import com.example.task_service.services.dtos.TaskFilter;
@@ -18,6 +19,12 @@ public class TaskController {
 
     private final TaskService taskService;
 
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> findById(@PathVariable Long id)
+    {
+        return ResponseEntity.ok(taskService.findById(id));
+    }
 
     @PostMapping
     public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {

@@ -35,40 +35,40 @@ public class EmployeeService {
         return employeeMapper.toDto(emp);
     }
 
-//    @Transactional
-//    public EmployeeDto save(EmployeeDto employeeDto) {
-//        var emp=employeeMapper.toEntity(employeeDto);
-//        Long depId=employeeDto.depId();
-//
-//        if(!depRepository.existsById(depId))
-//            throw new DataNotFoundException("Dep  not found");
-//
-//        emp.setDepartment(
-//                depRepository.getReferenceById(depId)
-//        );
-//
-//        return employeeMapper.toDto(
-//                employeeDao.getEmployeRepository().save(emp)
-//        );
-//    }
-
     @Transactional
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+        var emp=employeeMapper.toEntity(employeeDto);
+        Long depId=employeeDto.depId();
 
-        Employee employee = employeeMapper.toEntity(employeeDto);
+        if(!depRepository.existsById(depId))
+            throw new DataNotFoundException("Dep  not found");
 
-        Department department = depRepository.getReferenceById(employeeDto.depId());
+        emp.setDepartment(
+                depRepository.getReferenceById(depId)
+        );
 
-        if (department == null) {
-            throw new DataNotFoundException("Department not found");
-        }
-
-        employee.setDepartment(department);
-
-        Employee savedEmployee = employeeDao.getEmployeRepository().save(employee);
-        return employeeMapper.toDto(savedEmployee);
+        return employeeMapper.toDto(
+                employeeDao.getEmployeRepository().save(emp)
+        );
     }
 
+//    @Transactional
+//    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+//
+//        Employee employee = employeeMapper.toEntity(employeeDto);
+//
+//        Department department = depRepository.getReferenceById(employeeDto.depId());
+//
+//        if (department == null) {
+//            throw new DataNotFoundException("Department not found");
+//        }
+//
+//        employee.setDepartment(department);
+//
+//        Employee savedEmployee = employeeDao.getEmployeRepository().save(employee);
+//        return employeeMapper.toDto(savedEmployee);
+//    }
+//
     @Transactional(readOnly = true)
     public Page<EmployeeDto> findAll(EmployeeFilter employeeFilter) {
 
