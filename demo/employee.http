@@ -1,0 +1,65 @@
+### 🟢 1. Obtenir la liste paginée des employés
+GET http://localhost:5959/employees?page=0&size=5
+Accept: application/json
+
+###
+GET http://localhost:7552/demo/employees/with-department
+Accept: application/json
+
+### 🟢 2. Obtenir un employé par ID
+GET http://localhost:5959/employees/1
+Accept: application/json
+
+### 🟢 1. Créer un employé - Développeur
+POST http://localhost:5959/employees
+Content-Type: application/json
+
+{
+  "name": "Alice Smith",
+  "age": 28,
+  "role": "Backend Developer",
+  "email": "alice.smith@example.com",
+  "experienceYears": 4,
+  "depId": 2
+}
+
+### 🟢 2. Créer un employé - Chef de projet
+POST http://localhost:5959/employees
+Content-Type: application/json
+
+{
+  "name": "Bob Johnson",
+  "age": 35,
+  "role": "Project Manager",
+  "email": "bob.johnson@example.com",
+  "experienceYears": 10,
+  "depId": 3
+}
+
+### 🟢 3. Créer un employé - Data Analyst
+POST http://localhost:5959/employees
+Content-Type: application/json
+
+{
+  "name": "Charlie Brown",
+  "age": 29,
+  "role": "Data Analyst",
+  "email": "charlie.brown@example.com",
+  "experienceYears": 5,
+  "depId": 4
+}
+
+### 🟢 4. Mettre à jour un employé (ID = 1)
+PUT http://localhost:5959/employees/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "John Doe Updated",
+  "age": 31,
+  "role": "Senior Software Engineer",
+  "email": "john.doe@example.com",
+  "experienceYears": 6,
+  "depId": 1
+}
+

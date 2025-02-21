@@ -1,0 +1,27 @@
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: demo
+            uri: http://localhost:5959
+            filters:
+              - StripPrefix=1
+            predicates:
+              - Path=/demo/**
+
+          - id: task-service
+            uri: http://localhost:8080
+            filters:
+              - StripPrefix=1
+            predicates:
+                - Path=/task-service/**
+
+server:
+  port: 7552
+eureka:
+  client:
+    register-with-eureka: false

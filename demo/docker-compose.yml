@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+  demo-d:
+    build:
+      context: .
+    ports:
+      - 5959:5959
+    networks:
+      - smartroby
+networks:
+  smartroby:
+    external: true
